@@ -1,0 +1,39 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: vekjs
+# "service" is the name of this project. This will also be added to your AWS resource names.
+service: api-reto-2
+
+custom:
+  tableName: UserTable  # Definición de variable personalizada para el nombre de la tabla
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:*
+      Resource:
+      - Fn::GetAtt: [UserTable, Arn]
+  environment:
+    USERS_TABLE: ${self:custom.tableName}
+
+functions:
+  api:
+    handler: handler.handler
+    events:
+      - httpApi: "*"
+
+resources:
+  Resources:
+    UserTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: userId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: userId
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:custom.tableName}
