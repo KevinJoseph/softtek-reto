@@ -20,21 +20,21 @@ provider:
 
 functions:
   getUser:
-    handler: src/handler/users/getUser.getUser
+    handler: src/context/users/Infrastructure/handler/getUser.getUser
     events:
       - httpApi:
           path: /users/{userId}
           method: get
 
   createUser:
-    handler: src/handler/users/createUser.createUser
+    handler: src/context/users/Infrastructure/handler/createUser.createUser
     events:
       - httpApi:
           path: /users
           method: post
 
   getPeople:
-    handler: src/handler/people/getPeople.getPeopleById
+    handler: src/context/people/getPeople.getPeopleById
     events:
       - httpApi:
           path: /people/{peopleId}
