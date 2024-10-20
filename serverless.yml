@@ -20,14 +20,14 @@ provider:
 
 functions:
   getUser:
-    handler: handler/users/getUser.getUser
+    handler: src/handler/users/getUser.getUser
     events:
       - httpApi:
           path: /users/{userId}
           method: get
 
   createUser:
-    handler: handler/users/createUser.createUser
+    handler: src/handler/users/createUser.createUser
     events:
       - httpApi:
           path: /users
