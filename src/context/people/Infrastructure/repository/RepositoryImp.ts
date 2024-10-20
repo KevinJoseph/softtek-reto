@@ -1,5 +1,3 @@
-
-
 import { People } from "../../Domain/People";
 import { PeopleService } from "../services/PeopleService";
 

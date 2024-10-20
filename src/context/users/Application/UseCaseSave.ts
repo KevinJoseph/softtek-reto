@@ -1,15 +1,14 @@
 import { User } from "../Domain/User";
 import { UserRepository } from "../Infrastructure/repository/UserRepositoryImp";
 
-export class UserService {
+export class UseCaseSave {
   private userRepository: UserRepository;
 
   constructor() {
     this.userRepository = new UserRepository();
   }
 
-  async createUser(userId: string, name: string): Promise<User> {
-    const user: User = { userId, name };
+  async createUser(user: User): Promise<User> {
     await this.userRepository.create(user);
     return user;
   }
