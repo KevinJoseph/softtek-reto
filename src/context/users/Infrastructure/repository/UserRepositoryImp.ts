@@ -1,6 +1,6 @@
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { DynamoDBDocumentClient, PutCommand, GetCommand } from "@aws-sdk/lib-dynamodb";
-import { User } from "../../Domain/user";
+import { User } from "../../Domain/User";
 
 const client = new DynamoDBClient({});
 const docClient = DynamoDBDocumentClient.from(client);

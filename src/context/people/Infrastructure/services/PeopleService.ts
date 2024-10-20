@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { People } from '../schema/People';
+import { People } from '../../Domain/People';
 
 export class PeopleService{
+    
   async getPeopleById(id: number): Promise<People> {
     const { data } = await axios.get(`https://swapi.py4e.com/api/people/${id}/`);
 

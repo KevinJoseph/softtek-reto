@@ -34,10 +34,10 @@ functions:
           method: post
 
   getPeople:
-    handler: src/context/people/getPeople.getPeopleById
+    handler: src/context/people/Infrastructure/handler/getPeople.getPeopleById
     events:
       - httpApi:
-          path: /people/{peopleId}
+          path: /people/{id}
           method: get
 
 resources:
