@@ -52,25 +52,17 @@ _Note_: In current form, after deployment, your API is public and can be invoked
 After successful deployment, you can call the created application via HTTP:
 
 ```
-curl https://xxxxxxx.execute-api.us-east-1.amazonaws.com/
+https://vl9w26f6fj.execute-api.us-east-1.amazonaws.com/users/1234
 ```
 
 Which should result in the following response:
 
 ```json
-{ "message": "Hello from root!" }
+{"name":"Kevin","userId":"1234"}
 ```
 
-### Local development
-
-The easiest way to develop and test your function is to use the `dev` command:
+### Documentación de Uso
 
 ```
-serverless dev
+https://documenter.getpostman.com/view/5768800/2sAXxY3Tub
 ```
-
-This will start a local emulator of AWS Lambda and tunnel your requests to and from AWS Lambda, allowing you to interact with your function as if it were running in the cloud.
-
-Now you can invoke the function as before, but this time the function will be executed locally. Now you can develop your function locally, invoke it, and see the results immediately without having to re-deploy.
-
-When you are done developing, don't forget to run `serverless deploy` to deploy the function to the cloud.
