@@ -14,6 +14,8 @@ export class PeopleService{
 
     const people: People = {
       name: data.name,
+      gender: data.gender,
+      height: data.height
     };
 
     return people;

@@ -1,5 +1,8 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 import { UseCaseFind } from "../../Application/UseCaseFind";
+import { translate } from '../../Commons/helpers/translate'
+import { People, PeopleResponse } from "../../Domain/People";
+import { peopleTranslation } from "../../Commons/i18n/peopleTranslation";
 
 export const getPeopleById = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     const useCaseFind = new UseCaseFind();
@@ -16,11 +19,13 @@ export const getPeopleById = async (event: APIGatewayProxyEvent): Promise<APIGat
 
         const idPeople = Number(id);
         
-        const people = await useCaseFind.findPeople(idPeople);
+        const people: PeopleResponse = await useCaseFind.findPeople(idPeople);
+
         if (people) {
+            const translatePeople = translate<People>(people, peopleTranslation);
             return {
                 statusCode: 200,
-                body: JSON.stringify(people),
+                body: JSON.stringify(translatePeople),
             };
         } else {
             return {

@@ -2,6 +2,7 @@ import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { DynamoDBDocumentClient, PutCommand, GetCommand } from "@aws-sdk/lib-dynamodb";
 import { User } from "../../Domain/User";
 
+//separar en otro archivo la BD
 const client = new DynamoDBClient({});
 const docClient = DynamoDBDocumentClient.from(client);
 
