@@ -5,16 +5,16 @@ export const getUser = async (event: APIGatewayProxyEvent): Promise<APIGatewayPr
     const useCaseFind = new UseCaseFind();
 
     try {
-        const { userId } = event.pathParameters || {};
+        const { document } = event.pathParameters || {};
 
-        if (!userId) {
+        if (!document) {
             return {
                 statusCode: 400,
-                body: JSON.stringify({ error: "userId is required" }),
+                body: JSON.stringify({ error: "document is required" }),
             };
         }
 
-        const user = await useCaseFind.findUser(userId);
+        const user = await useCaseFind.findUser(document);
         if (user) {
             return {
                 statusCode: 201,

@@ -8,7 +8,7 @@ export class UseCaseSave {
     this.userRepository = new UserRepository();
   }
 
-  async createUser(user: User): Promise<User> {
+  async create(user: User): Promise<User> {
     await this.userRepository.create(user);
     return user;
   }

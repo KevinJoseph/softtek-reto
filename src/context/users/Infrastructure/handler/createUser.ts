@@ -6,21 +6,22 @@ export const createUser = async (event: APIGatewayProxyEvent): Promise<APIGatewa
   const useCaseSave = new UseCaseSave();
 
   try {
-    const { userId, name } = JSON.parse(event.body || '{}');
+    const { document, phone } = JSON.parse(event.body || '{}');
 
-    if (typeof userId !== "string" || typeof name !== "string") {
+    if (typeof document !== "string") {
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: '"userId" and "nombre" must be strings' }),
+        body: JSON.stringify({ error: '"document" and "nombre" must be strings' }),
       };
     }
 
     const user: User = {
-      userId,
-      name
+      document,
+      phone,
+
     };
 
-    const createdUser = await useCaseSave.createUser(user);
+    const createdUser = await useCaseSave.create(user);
 
     return {
       statusCode: 201,

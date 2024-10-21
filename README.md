@@ -55,11 +55,11 @@ _Note_: In current form, after deployment, your API is public and can be invoked
 After successful deployment, you can call the created application via HTTP:
 
 ```
-https://vl9w26f6fj.execute-api.us-east-1.amazonaws.com/users/1234
+https://vl9w26f6fj.execute-api.us-east-1.amazonaws.com/users/77167125
 ```
 
 Which should result in the following response:
 
 ```json
-{"name":"Kevin","userId":"1234"}
+{"document":"77167125","phone":"123456789"}
 ```

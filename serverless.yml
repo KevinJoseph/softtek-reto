@@ -23,7 +23,7 @@ functions:
     handler: src/context/users/Infrastructure/handler/getUser.getUser
     events:
       - httpApi:
-          path: /users/{userId}
+          path: /users/{document}
           method: get
 
   createUser:
@@ -46,10 +46,10 @@ resources:
       Type: AWS::DynamoDB::Table
       Properties:
         AttributeDefinitions:
-          - AttributeName: userId
+          - AttributeName: document
             AttributeType: S
         KeySchema:
-          - AttributeName: userId
+          - AttributeName: document
             KeyType: HASH
         BillingMode: PAY_PER_REQUEST
         TableName: ${self:custom.tableName}

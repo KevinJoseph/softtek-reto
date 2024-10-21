@@ -25,11 +25,11 @@ export class UserRepository {
     }
   }
 
-  async find(userId: String): Promise<User | null> {
+  async find(document: String): Promise<User | null> {
 
     const params = {
       TableName: USERS_TABLE,
-      Key: { userId },
+      Key: { document },
     };
 
     try {

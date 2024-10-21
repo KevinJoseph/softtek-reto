@@ -8,8 +8,8 @@ export class UseCaseFind {
     this.userRepository = new UserRepository();
   }
 
-  async findUser(userId: String): Promise<User | null> {
-    let result = await this.userRepository.find(userId);
+  async findUser(document: String): Promise<User | null> {
+    let result = await this.userRepository.find(document);
     return result;
   }
 }
