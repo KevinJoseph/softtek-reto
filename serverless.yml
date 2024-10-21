@@ -17,6 +17,8 @@ provider:
       - Fn::GetAtt: [UserTable, Arn]
   environment:
     USERS_TABLE: ${self:custom.tableName}
+  httpApi:
+    cors: true
 
 functions:
   getUser:

@@ -11,6 +11,10 @@ export const createUser = async (event: APIGatewayProxyEvent): Promise<APIGatewa
     if (typeof document !== "string") {
       return {
         statusCode: 400,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': true,    
+        },
         body: JSON.stringify({ error: '"document" and "nombre" must be strings' }),
       };
     }
@@ -25,6 +29,11 @@ export const createUser = async (event: APIGatewayProxyEvent): Promise<APIGatewa
 
     return {
       statusCode: 201,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
+    
+      },
       body: JSON.stringify(createdUser),
     };
     
@@ -32,6 +41,10 @@ export const createUser = async (event: APIGatewayProxyEvent): Promise<APIGatewa
     console.error("Error in createUser handler:", error);
     return {
       statusCode: 500,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,  
+      },
       body: JSON.stringify({ error: "Internal Server Error" }),
     };
   }
